@@ -26,7 +26,6 @@
     {
       "name": "dsm-daily",
       "app": "dsm",
-      "image":"registry.fly.io/tri-cron-manager:dsm",
       "command": "python -m tri.cli.main dsm run --daily=True",
       "schedule": "0 6 * * *",
       "config": {
