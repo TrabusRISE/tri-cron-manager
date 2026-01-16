@@ -16,7 +16,7 @@
                 "cpus": 1,
                 "memory_mb": 512
             },
-            "image": "registry.fly.io/dsm:latest",
+            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
@@ -40,7 +40,7 @@
                 "cpus": 1,
                 "memory_mb": 512
             },
-            "image": "registry.fly.io/dsm:latest",
+            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
