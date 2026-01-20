@@ -181,3 +181,13 @@ cm jobs trigger <schedule-id>
 ```
 
 
+
+## Update schedule
+
+Update schedules.json
+
+Redploy tri-cron-manager app
+
+```
+fly deploy .
+```

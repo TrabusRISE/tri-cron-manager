@@ -15,7 +15,7 @@
                 "cpus": 1,
                 "memory_mb": 512
             },
-            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
+            "image": "registry.fly.io/dsm:deployment-01KFEKBK1F5PAG8ZQXXT4JT42Z",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
@@ -39,7 +39,7 @@
                 "cpus": 1,
                 "memory_mb": 512
             },
-            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
+            "image": "registry.fly.io/dsm:deployment-01KFEKBK1F5PAG8ZQXXT4JT42Z",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
@@ -63,7 +63,7 @@
                 "cpus": 1,
                 "memory_mb": 512
             },
-            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
+            "image": "registry.fly.io/dsm:deployment-01KFEKBK1F5PAG8ZQXXT4JT42Z",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
