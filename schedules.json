@@ -1,5 +1,28 @@
 [
     {
+        "name": "dsm-migrate",
+        "app_name": "dsm",
+        "command": "alembic -c  ingestors/dsm/alembic.ini upgrade head",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/dsm:deployment-01KF47SZ30C9GZA4SX0T1G8NSH",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
         "name": "dsm-station-refresh",
         "app_name": "dsm",
         "command": "python -m tri.cli.main dsm run --refresh_stations=True",
