@@ -26,6 +26,7 @@
         "name": "dsm-station-refresh",
         "app_name": "dsm",
         "command": "python -m tri.cli.main dsm run --refresh_stations=True",
+        "command_timeout": 300,
         "schedule": "0 0 * * 0",
         "enabled": true,
         "config": {
