@@ -299,7 +299,7 @@
         "app_name": "reg-summaries",
         "command": "python -m tri.cli.main reg_summaries run",
         "command_timeout": 3600,
-        "schedule": "32 21 * * *",
+        "schedule": "45 20 * * *",
         "enabled": true,
         "config": {
             "metadata": {
