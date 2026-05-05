@@ -298,7 +298,7 @@
         "name": "reg-summaries-generate",
         "app_name": "reg-summaries",
         "command": "python -m tri.cli.main reg_summaries run",
-        "command_timeout": 600,
+        "command_timeout": 3600,
         "schedule": "0 3 * * *",
         "enabled": true,
         "config": {
