@@ -320,6 +320,54 @@
         }
     },
     {
+        "name": "rpat-status-migrate",
+        "app_name": "rpat-status",
+        "command": "alembic -c /app/ingestors/rpat_status/alembic.ini upgrade head",
+        "enabled": false,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/rpat-status:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "rpat-status-check",
+        "app_name": "rpat-status",
+        "command": "python -m tri.cli.main rpat_status run --status_check=True",
+        "command_timeout": 300,
+        "schedule": "0 8 * * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/rpat-status:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
         "name": "gfs-drop-old",
         "app_name": "gfs",
         "command": "python -m tri.cli.main gfs run --drop_old=True --days_to_keep=7",
