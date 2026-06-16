@@ -240,7 +240,7 @@
             "guest": {
                 "cpu_kind": "shared",
                 "cpus": 2,
-                "memory_mb": 2048
+                "memory_mb": 3072
             },
             "image": "registry.fly.io/gfs:latest",
             "mounts": [
@@ -272,7 +272,7 @@
             "guest": {
                 "cpu_kind": "shared",
                 "cpus": 2,
-                "memory_mb": 2048
+                "memory_mb": 3072
             },
             "image": "registry.fly.io/gfs:latest",
             "mounts": [
@@ -304,7 +304,7 @@
             "guest": {
                 "cpu_kind": "shared",
                 "cpus": 2,
-                "memory_mb": 2048
+                "memory_mb": 3072
             },
             "image": "registry.fly.io/gfs:latest",
             "mounts": [
@@ -336,7 +336,7 @@
             "guest": {
                 "cpu_kind": "shared",
                 "cpus": 2,
-                "memory_mb": 2048
+                "memory_mb": 3072
             },
             "image": "registry.fly.io/gfs:latest",
             "mounts": [
