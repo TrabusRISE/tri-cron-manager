@@ -622,8 +622,8 @@
             "disable_machine_autostart": true,
             "guest": {
                 "cpu_kind": "shared",
-                "cpus": 1,
-                "memory_mb": 512
+                "cpus": 2,
+                "memory_mb": 2048
             },
             "image": "registry.fly.io/reg-summaries:latest",
             "restart": {
