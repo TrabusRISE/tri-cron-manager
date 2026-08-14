@@ -731,5 +731,31 @@
                 "policy": "no"
             }
         }
+    },
+    {
+        "name": "storm-reports-backfill-recent",
+        "app_name": "storm-reports",
+        "command": "python -m tri.cli.main storm_reports backfill_recent",
+        "command_timeout": 900,
+        "schedule": "0 7 * * 0",
+        "region": "lax",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/storm-reports:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
     }
 ]
