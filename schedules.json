@@ -70,8 +70,8 @@
                 "policy": "no"
             }
         }
-    }
-    ,{
+    },
+    {
         "name": "gfs-migrate",
         "app_name": "gfs",
         "command": "alembic -c ingestors/gfs/alembic.ini upgrade head",
@@ -752,6 +752,130 @@
                 "memory_mb": 512
             },
             "image": "registry.fly.io/storm-reports:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-ghcn-hourly-migrate",
+        "app_name": "tri-ghcn-hourly",
+        "command": "alembic -c ingestors/ghcn_hourly/alembic.ini upgrade head",
+        "schedule": "",
+        "enabled": false,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-ghcn-hourly@sha256:da6245c4c45f2a1df6769cb540cc1f278f69510f6424f88b2b00c934ccefb306",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-ghcn-hourly-refresh-stations",
+        "app_name": "tri-ghcn-hourly",
+        "command": "python -m tri.cli.main ghcn_hourly run --refresh_station_id_list=True",
+        "command_timeout": 300,
+        "schedule": "0 0 * * 0",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-ghcn-hourly@sha256:da6245c4c45f2a1df6769cb540cc1f278f69510f6424f88b2b00c934ccefb306",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-ghcn-hourly-get-new-readings",
+        "app_name": "tri-ghcn-hourly",
+        "command": "python -m tri.cli.main ghcn_hourly run --get_new_readings=True",
+        "command_timeout": 1800,
+        "schedule": "0 8 * * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-ghcn-hourly@sha256:da6245c4c45f2a1df6769cb540cc1f278f69510f6424f88b2b00c934ccefb306",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-ghcn-hourly-update-reading-dates",
+        "app_name": "tri-ghcn-hourly",
+        "command": "python -m tri.cli.main ghcn_hourly run --update_reading_dates=True",
+        "command_timeout": 900,
+        "schedule": "0 2 * * 0",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-ghcn-hourly@sha256:da6245c4c45f2a1df6769cb540cc1f278f69510f6424f88b2b00c934ccefb306",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-ghcn-hourly-find-missing-readings",
+        "app_name": "tri-ghcn-hourly",
+        "command": "python -m tri.cli.main ghcn_hourly run --find_missing_readings=True",
+        "command_timeout": 900,
+        "schedule": "0 10 * * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-ghcn-hourly@sha256:da6245c4c45f2a1df6769cb540cc1f278f69510f6424f88b2b00c934ccefb306",
             "restart": {
                 "max_retries": 1,
                 "policy": "no"
