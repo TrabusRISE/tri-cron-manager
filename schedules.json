@@ -757,5 +757,54 @@
                 "policy": "no"
             }
         }
+    },
+    {
+        "name": "tri-nclimdiv-migrate",
+        "app_name": "tri-nclimdiv",
+        "command": "alembic -c ingestors/nclimdiv/alembic.ini upgrade head",
+        "schedule": "",
+        "enabled": false,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-nclimdiv@sha256:0fee04860f9b50629b3796c89bb911f60a1a548be05c54e4c63f85a314e61630",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "tri-nclimdiv-daily",
+        "app_name": "tri-nclimdiv",
+        "command": "python -m tri.cli.main nclimdiv run --daily=True",
+        "command_timeout": 300,
+        "schedule": "0 10 * * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-nclimdiv@sha256:0fee04860f9b50629b3796c89bb911f60a1a548be05c54e4c63f85a314e61630",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
     }
 ]
