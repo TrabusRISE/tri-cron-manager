@@ -757,5 +757,134 @@
                 "policy": "no"
             }
         }
+    },
+    {
+        "name": "scan-migrate",
+        "app_name": "scan",
+        "command": "alembic -c ingestors/scan/alembic.ini upgrade head",
+        "schedule": "",
+        "region": "lax",
+        "enabled": false,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/scan:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "scan-daily",
+        "app_name": "scan",
+        "command": "python -m tri.cli.main scan run --daily=True",
+        "command_timeout": 300,
+        "schedule": "0 8 * * *",
+        "region": "lax",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/scan:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "scan-update-reading-dates",
+        "app_name": "scan",
+        "command": "python -m tri.cli.main scan run --update_reading_dates=True",
+        "command_timeout": 300,
+        "schedule": "0 10 * * *",
+        "region": "lax",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/scan:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "scan-find-missing-readings",
+        "app_name": "scan",
+        "command": "python -m tri.cli.main scan run --find_missing_readings=True --station_id=808 --expected_missing=1",
+        "command_timeout": 300,
+        "schedule": "0 12 * * *",
+        "region": "lax",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/scan:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "scan-update-meta-data",
+        "app_name": "scan",
+        "command": "python -m tri.cli.main scan run --update_meta_data=True",
+        "command_timeout": 900,
+        "schedule": "0 2 1 * *",
+        "region": "lax",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/scan:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
     }
 ]
