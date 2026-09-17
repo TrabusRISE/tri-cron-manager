@@ -757,5 +757,77 @@
                 "policy": "no"
             }
         }
+    },
+    {
+        "name": "mesonet_ar-migrate",
+        "app_name": "tri-mesonet-ar",
+        "command": "alembic -c ingestors/mesonet_ar/alembic.ini upgrade head",
+        "schedule": "",
+        "enabled": false,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-mesonet-ar:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "mesonet_ar-get-new-readings",
+        "app_name": "tri-mesonet-ar",
+        "command": "python -m tri.cli.main mesonet_ar run --get_new_readings=True",
+        "schedule": "5 * * * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-mesonet-ar:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
+    },
+    {
+        "name": "mesonet_ar-get-metadata",
+        "app_name": "tri-mesonet-ar",
+        "command": "python -m tri.cli.main mesonet_ar run --get_metadata=True",
+        "schedule": "0 2 1 * *",
+        "enabled": true,
+        "config": {
+            "metadata": {
+                "fly_process_group": "cron"
+            },
+            "auto_destroy": true,
+            "disable_machine_autostart": true,
+            "guest": {
+                "cpu_kind": "shared",
+                "cpus": 1,
+                "memory_mb": 512
+            },
+            "image": "registry.fly.io/tri-mesonet-ar:latest",
+            "restart": {
+                "max_retries": 1,
+                "policy": "no"
+            }
+        }
     }
 ]
